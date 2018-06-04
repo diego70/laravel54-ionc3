@@ -46,7 +46,10 @@ class UsersController extends Controller
         /** @var Form $form */
         $form = \FormBuilder::create(UserForm::class);
         if (!$form->isvalid()){
-            //
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
         }
         $data = $form->getFieldValues();
         $data['role'] = User::ROLE_ADMIN;
@@ -76,7 +79,12 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $form = \FormBuilder::create(UserForm::class,[
+            'url'=>route('admin.users.update', ['user'=> $user->id]),
+            'method' => 'PUT',
+            'model' => $user
+        ]);
+        return view('admin.users.edit', compact('form'));
     }
 
     /**
