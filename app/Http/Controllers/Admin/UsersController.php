@@ -2,6 +2,7 @@
 
 namespace BluesFlix\Http\Controllers\Admin;
 
+use BluesFlix\Forms\UserForm;
 use BluesFlix\Models\User;
 use Illuminate\Http\Request;
 use BluesFlix\Http\Controllers\Controller;
@@ -26,7 +27,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        $form = \FormBuilder::create(UserForm::class,[
+            'url'=>route('admin.users.store'),
+            'method' => 'POST'
+        ]);
+        return view('admin.users.create', compact('form'));
     }
 
     /**
