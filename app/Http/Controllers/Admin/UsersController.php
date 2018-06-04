@@ -6,6 +6,7 @@ use BluesFlix\Forms\UserForm;
 use BluesFlix\Models\User;
 use Illuminate\Http\Request;
 use BluesFlix\Http\Controllers\Controller;
+use Kris\LaravelFormBuilder\Form;
 
 class UsersController extends Controller
 {
@@ -42,7 +43,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /** @var Form $form */
+        $form = \FormBuilder::create(UserForm::class);
+        if (!$form->isvalid()){
+            //
+        }
+        $data = $form->getFieldValues();
+        $data['role'] = User::ROLE_ADMIN;
+        $data['password'] = User::generatePassword();
+        User::create($data);
+        $request->session()->flash('message', 'Usuário criado com sucesso');
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
