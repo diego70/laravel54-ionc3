@@ -68,7 +68,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -96,7 +96,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        /** @var Form $form */
+        $form = \FormBuilder::create(UserForm::class, [
+            'data' => ['id' => $user->id]
+        ]);
+        if (!$form->isvalid()){
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
+        }
+        $data = array_except($form->getFieldValues(), ['pasword', 'role']);
+        $user->fill($data);
+        $user->save();
+        $request->session()->flash('message', 'Usuário alterado com sucesso');
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -107,6 +122,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.users.index');
     }
 }
