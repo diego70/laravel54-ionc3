@@ -13,6 +13,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use BluesFlix\Models\Category;
 use BluesFlix\Models\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
@@ -30,5 +31,11 @@ $factory->state(User::class, 'admin', function (Faker\Generator $faker) {
 
     return [
         'role' => User::ROLE_ADMIN,
+    ];
+});
+
+$factory->define(Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word
     ];
 });

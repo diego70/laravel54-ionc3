@@ -170,6 +170,9 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \BluesFlix\Providers\RepositoryServiceProvider::class,
+        Jrean\UserVerification\UserVerificationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,10 +232,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Table' => Bootstrapper\Facades\Table::class,
-        'Icon' => \Bootstrapper\Facades\Icon::class,
-        'Alert' => \Bootstrapper\Facades\Alert::class,
-        'Button' => \Bootstrapper\Facades\Button::class,
+        'Icon' => Bootstrapper\Facades\Icon::class,
+        'Alert' => Bootstrapper\Facades\Alert::class,
+        'Button' => Bootstrapper\Facades\Button::class,
+        'Navbar' => Bootstrapper\Facades\Navbar::class,
+        'Navigation' => Bootstrapper\Facades\Navigation::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'UserVerifcation' => Jrean\UserVerification\Facades\UserVerification::class,
 
     ],
 
