@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
     <div id="app">
@@ -20,9 +21,11 @@
             if(Auth::check()){
                 $arrayLinks = [
                     ['link' => route('admin.users.index'), 'title' => 'Usuário'],
+                    ['link' => route('admin.categories.index'), 'title' => 'Categoria'],
+                    ['link' => route('admin.series.index'), 'title' => 'Série'],
                 ];
                 $menus = Navigation::links($arrayLinks);
-                $logout = Navigation::links([[
+                $menuRight = Navigation::links([[
                     Auth::user()->name,
                     [
                         [
@@ -32,9 +35,13 @@
                                 'onclick' => "event.preventDefault();document.getElementById(\"form-logout\").submit();"
                             ]
                         ],
+                        [
+                            'link' => route('admin.user_settings.edit'),
+                            'title' => 'Configurações',
+                        ]
                     ]
                 ]])->right();
-                $navbar->withContent($menus)->withContent($logout);
+                $navbar->withContent($menus)->withContent($menuRight);
             }
         ?>
         {!! $navbar !!}

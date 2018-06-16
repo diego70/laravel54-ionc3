@@ -14,7 +14,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use BluesFlix\Models\Category;
+use BluesFlix\Models\Serie;
 use BluesFlix\Models\User;
+
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
@@ -37,5 +39,14 @@ $factory->state(User::class, 'admin', function (Faker\Generator $faker) {
 $factory->define(Category::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word
+    ];
+});
+
+
+$factory->define(Serie::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3),
+        'description' => $faker->sentence(10),
+        'thumb' => 'thumb.jpg'
     ];
 });
