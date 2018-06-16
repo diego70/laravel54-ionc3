@@ -18,6 +18,7 @@ use BluesFlix\Models\Serie;
 use BluesFlix\Models\User;
 
 
+
 $factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -48,5 +49,18 @@ $factory->define(Serie::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence(3),
         'description' => $faker->sentence(10),
         'thumb' => 'thumb.jpg'
+    ];
+});
+
+
+$factory->define(BluesFlix\Models\Video::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3),
+        'description' => $faker->sentence(10),
+        'duration' => rand(1,30),
+        'file' => 'file.jpg',
+        'thumb' => 'thumb.jpg',
+        'published' => rand(0,1),
+        'completed' => 1
     ];
 });
