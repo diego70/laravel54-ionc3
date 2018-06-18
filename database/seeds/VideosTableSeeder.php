@@ -1,5 +1,6 @@
 <?php
 
+use BluesFlix\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -14,9 +15,11 @@ class VideosTableSeeder extends Seeder
     {
         /** @var Collection $series */
         $series= \BluesFlix\Models\Serie::all();
+        $categories = Category::all();
         factory(\BluesFlix\Models\Video::class,100)
             ->create()
-            ->each(function ($video)use($series){
+            ->each(function ($video)use($series, $categories){
+                $video->categories()->attach($categories->random(4)->pluck('id'));
                 $num = rand(1, 3);
                 if ($num%2==0){
                     $serie = $series->random();

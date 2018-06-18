@@ -8,6 +8,8 @@ use BluesFlix\Repositories\UserRepository;
 use BluesFlix\Repositories\UserRepositoryEloquent;
 use BluesFlix\Repositories\SerieRepository;
 use BluesFlix\Repositories\SerieRepositoryEloquent;
+use BluesFlix\Repositories\VideoRepository;
+use BluesFlix\Repositories\VideoRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -32,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
         $this->app->bind(CategoryRepository::class, CategoryRepositoryEloquent::class);
         $this->app->bind(SerieRepository::class, SerieRepositoryEloquent::class);
+        $this->app->bind(VideoRepository::class, VideoRepositoryEloquent::class);
         //:end-bindings:
     }
 }

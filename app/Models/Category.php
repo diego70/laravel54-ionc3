@@ -18,6 +18,11 @@ class Category extends Model implements TableInterface
     {
         return ['#', 'Nome'];
     }
+
+    public function videos(){
+
+        return $this->belongsToMany(Video::class);
+    }
     /**
      * Get the value for a given header. Note that this will be the value
      * passed to any callback functions that are being used.
@@ -34,4 +39,6 @@ class Category extends Model implements TableInterface
                 return $this->name;
         }
     }
+
+
 }

@@ -237,6 +237,7 @@ return [
         'Button' => Bootstrapper\Facades\Button::class,
         'Navbar' => Bootstrapper\Facades\Navbar::class,
         'Navigation' => Bootstrapper\Facades\Navigation::class,
+        'MediaObject' =>\Bootstrapper\Facades\MediaObject::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'UserVerifcation' => Jrean\UserVerification\Facades\UserVerification::class,
 
