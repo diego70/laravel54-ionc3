@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' =>env('STORAGE_DRIVE', 'videos_local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,6 +51,13 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'videos_local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/videos_test'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

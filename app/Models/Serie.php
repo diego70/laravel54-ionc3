@@ -2,6 +2,7 @@
 
 namespace BluesFlix\Models;
 
+use BluesFlix\Media\SeriePaths;
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -12,9 +13,12 @@ class Serie extends Model implements Transformable, TableInterface
 {
     use TransformableTrait;
 
+    use SeriePaths;
+
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'thumb'
     ];
 
     /**
@@ -24,7 +28,7 @@ class Serie extends Model implements Transformable, TableInterface
      */
     public function getTableHeaders()
     {
-        return ['#', 'Titulo', 'Descrição'];
+        return ['#'];
     }
 
     /**
@@ -39,11 +43,7 @@ class Serie extends Model implements Transformable, TableInterface
         switch ($header){
             case '#':
                 return $this->id;
-            case 'Titulo':
-                return $this->title;
 
-            case 'Descrição':
-                return $this->description;
         }
     }
 
