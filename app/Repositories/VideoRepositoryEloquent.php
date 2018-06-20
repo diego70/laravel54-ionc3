@@ -2,11 +2,10 @@
 
 namespace BluesFlix\Repositories;
 
+use BluesFlix\Media\ThumbUploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use BluesFlix\Repositories\VideoRepository;
 use BluesFlix\Models\Video;
-use BluesFlix\Validators\VideoValidator;
 
 /**
  * Class VideoRepositoryEloquent
@@ -14,6 +13,7 @@ use BluesFlix\Validators\VideoValidator;
  */
 class VideoRepositoryEloquent extends BaseRepository implements VideoRepository
 {
+    use ThumbUploads;
 
     public function update(array $attributes, $id)
     {

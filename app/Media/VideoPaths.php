@@ -4,27 +4,27 @@
 namespace BluesFlix\Media;
 
 
-trait SeriePaths
+trait VideoPaths
 {
     use ThumbsPath;
 
     public function getThumbFolderStorageAttribute()
     {
-        return "series/{$this->id}";
+        return "videos/{$this->id}";
     }
 
     public function getThumbAssetAttribute()
     {
-        return route('admin.series.thumb_asset',['serie'=> $this->id]);
+        //return route('admin.series.thumb_asset',['serie'=> $this->id]);
     }
 
     public function getThumbSmallAssetAttribute()
     {
-        return route('admin.series.thumb_small_asset',['serie'=> $this->id]);
+        //return route('admin.series.thumb_small_asset',['serie'=> $this->id]);
     }
 
     public function getThumbDefaultAttribute(){
-        return env('SERIE_NO_THUMB');
+        return env('VIDEO_NO_THUMB');
     }
 
 }

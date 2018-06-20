@@ -9,6 +9,7 @@ class SerieForm extends Form
     public function buildForm()
     {
         $id = $this->getData('id');
+
         $rulesThumbFile = 'image|max:1024';
         $rulesThumbFile = !$id ? "required|$rulesThumbFile" : $rulesThumbFile;
 

@@ -2,6 +2,7 @@
 
 namespace BluesFlix\Models;
 
+use BluesFlix\Media\VideoPaths;
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -10,6 +11,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Video extends Model implements Transformable, TableInterface
 {
     use TransformableTrait;
+    use VideoPaths;
 
     protected $fillable = [
         'title',
