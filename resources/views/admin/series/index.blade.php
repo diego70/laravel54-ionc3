@@ -33,7 +33,7 @@
 @push('styles')
     <style type="text/css">
         table > thead > tr > th:nth-child(3){
-            width: 50%;
+            width: 400px;
         }
     </style>
 @endpush

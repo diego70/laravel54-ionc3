@@ -3,6 +3,8 @@
 namespace BluesFlix\Repositories;
 
 use BluesFlix\Media\ThumbUploads;
+use BluesFlix\Media\Uploads;
+use BluesFlix\Media\VideoUploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use BluesFlix\Models\Video;
@@ -13,7 +15,7 @@ use BluesFlix\Models\Video;
  */
 class VideoRepositoryEloquent extends BaseRepository implements VideoRepository
 {
-    use ThumbUploads;
+    use ThumbUploads, VideoUploads, Uploads;
 
     public function update(array $attributes, $id)
     {

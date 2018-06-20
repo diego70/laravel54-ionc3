@@ -46,6 +46,7 @@ Route::group([
         Route::name('user_settings.update')->put('users/settings', 'Auth\UserSettingsController@update');
         Route::resource('users', 'UsersController');
         Route::resource('categories','CategoriesController');
+
         Route::name('series.thumb_asset')
             ->get('series/{serie}/thumb_asset','SeriesController@thumbAsset');
         Route::name('series.thumb_small_asset')
@@ -57,6 +58,13 @@ Route::group([
             Route::name('uploads.create')->get('{video}/uploads', 'VideoUploadsController@create');
             Route::name('uploads.store')->post('{video}/uploads', 'VideoUploadsController@store');
         });
+
+        Route::name('videos.file_asset')
+            ->get('videos/{video}/file_asset','VideosController@fileAsset');
+        Route::name('videos.thumb_asset')
+            ->get('videos/{video}/thumb_asset','VideosController@thumbAsset');
+        Route::name('videos.thumb_small_asset')
+            ->get('videos/{video}/thumb_small_asset','VideosController@thumbSmallAsset');
         Route::resource('videos','VideosController');
     });
 

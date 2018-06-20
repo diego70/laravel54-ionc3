@@ -19,15 +19,18 @@ class VideosTableSeeder extends Seeder
         $categories = Category::all();
         $repository = app(VideoRepository::class);
         $collectionThumbs = $this->getThumbs();
-        factory(\BluesFlix\Models\Video::class,100)
+        $collectionVideos = $this->getVideos();
+        factory(\BluesFlix\Models\Video::class,4)
             ->create()
             ->each(function ($video)use(
                 $series,
                 $categories,
                 $repository,
-                $collectionThumbs
+                $collectionThumbs,
+                $collectionVideos
             ){
                 $repository->uploadThumb($video->id, $collectionThumbs->random());
+                $repository->uploadFile($video->id, $collectionVideos->random());
                 $video->categories()->attach($categories->random(4)->pluck('id'));
                 $num = rand(1, 3);
                 if ($num%2==0){
@@ -44,6 +47,15 @@ class VideosTableSeeder extends Seeder
             new \Illuminate\Http\UploadedFile(
                 storage_path('app/files/faker/thumbs/thumb_ww.jpg'),
                 'thumb_ww.jpg'
+            ),
+        ]);
+    }
+
+    protected function getVideos(){
+        return new \Illuminate\Support\Collection([
+            new \Illuminate\Http\UploadedFile(
+                storage_path('app/files/faker/videos/westworld.mp4'),
+                'westworld.mp4'
             ),
         ]);
     }

@@ -3,6 +3,7 @@
 namespace BluesFlix\Repositories;
 
 use BluesFlix\Media\ThumbUploads;
+use BluesFlix\Media\Uploads;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use BluesFlix\Repositories\SerieRepository;
@@ -15,7 +16,8 @@ use BluesFlix\Validators\SerieValidator;
  */
 class SerieRepositoryEloquent extends BaseRepository implements SerieRepository
 {
-    use ThumbUploads;
+    use ThumbUploads, Uploads;
+
 
     public function create(array $attributes)
     {
