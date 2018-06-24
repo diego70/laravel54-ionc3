@@ -33,7 +33,7 @@ class AddTokenToHeaderListener
     {
         $token = $this->jwt->getToken();
         if($token){
-            $event->response->header->set('Authorization', "Bearer {$token->get()}");
+            $event->response->headers->set('Authorization', "Bearer {$token->get()}");
         }
     }
 }
