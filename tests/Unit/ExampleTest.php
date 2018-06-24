@@ -17,4 +17,5 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
 }
