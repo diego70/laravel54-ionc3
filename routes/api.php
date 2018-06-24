@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 /*Route::get('/test', function (){
     return \BluesFlix\Models\User::paginate();
@@ -48,6 +48,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
             ApiRoute::post('/logout', 'AuthController@logout');
             ApiRoute::get('/test', function(){
                 return "Opa!! Estou autenticado";
+            });
+            ApiRoute::get('/user', function(Request $request){
+                return $request->user('api');
+                //app(\Dingo\Api\Auth\Auth::class)->user();
+                //return \Auth::guard('api')->user;
             });
         });
     });

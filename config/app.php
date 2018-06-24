@@ -176,6 +176,7 @@ return [
         \Folklore\Image\ImageServiceProvider::class,
         \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         \Dingo\Api\Provider\LaravelServiceProvider::class,
+        \Laravel\Dusk\DuskServiceProvider::class,
 
         /*
          * Application Service Providers...
