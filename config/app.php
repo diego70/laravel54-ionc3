@@ -174,6 +174,8 @@ return [
         \BluesFlix\Providers\RepositoryServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         \Folklore\Image\ImageServiceProvider::class,
+        \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        \Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +244,7 @@ return [
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'UserVerifcation' => Jrean\UserVerification\Facades\UserVerification::class,
         'Image' => Folklore\Image\Facades\Image::class,
+        'ApiRoute' => \Dingo\Api\Facade\Route::class,
 
     ],
 

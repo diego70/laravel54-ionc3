@@ -2,6 +2,7 @@
 
 namespace BluesFlix\Providers;
 
+use Dingo\Api\Event\ResponseWasMorphed;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,10 +14,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'BluesFlix\Events\Event' => [
-            'BluesFlix\Listeners\EventListener',
+        ResponseWasMorphed::class => [
+            'BluesFlix\Listeners\AddTokenToHeaderListener',
         ],
     ];
+
+
 
     /**
      * Register any events for your application.

@@ -3,6 +3,8 @@
 namespace BluesFlix\Providers;
 
 use BluesFlix\Models\Video;
+use Dingo\Api\Exception\Handler;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -51,5 +53,10 @@ class AppServiceProvider extends ServiceProvider
             },
             true
         );
+
+        $handler = app(Handler::class);
+        $handler->register(function(AuthenticationException $exception){
+            return response()->json(['error'=> 'Unauthenticated'], 401);
+        });
     }
 }
