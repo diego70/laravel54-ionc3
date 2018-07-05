@@ -2,6 +2,7 @@
 
 namespace BluesFlix\Http;
 
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 
@@ -19,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \BluesFlix\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
